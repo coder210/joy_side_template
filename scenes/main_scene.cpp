@@ -32,7 +32,7 @@ void MainScene::Load() {
     const char* map_rel = AssetManager::GetInstance()
         ? AssetManager::GetInstance()->GetResourcePath(AssetManager::kCatMaps, "main_scene")
         : nullptr;
-    if (!map_rel) map_rel = "joy_side_template/levels/main_scene.lua";
+    if (!map_rel) map_rel = "levels/main_scene.lua";
     self->tilemap = jtilemap_load_file(map_rel);
     if (self->tilemap) {
         self->tilemap_render = jtilemap_render_create(self->ctx()->r2d, MAP_ASSET_BASE, NULL);

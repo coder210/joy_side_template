@@ -1,7 +1,7 @@
 {
     "bald_pirate": {
         "name": "光头海盗",
-        "sprite_dir": "joy_side_template/sprites/enemies/bald_pirate/",
+        "sprite_dir": "sprites/enemies/bald_pirate/",
         "stats": { "hp": 50, "speed": 3.0, "melee_damage": 20, "render_height": 1.0 },
         "ai": {
             "ranged": false,
@@ -23,7 +23,7 @@
     },
     "big_guy": {
         "name": "大个子",
-        "sprite_dir": "joy_side_template/sprites/enemies/big_guy/",
+        "sprite_dir": "sprites/enemies/big_guy/",
         "stats": { "hp": 120, "speed": 1.6, "melee_damage": 35, "render_height": 1.35 },
         "ai": {
             "ranged": false,
@@ -45,7 +45,7 @@
     },
     "captain": {
         "name": "船长",
-        "sprite_dir": "joy_side_template/sprites/enemies/captain/",
+        "sprite_dir": "sprites/enemies/captain/",
         "stats": { "hp": 60, "speed": 2.4, "melee_damage": 12, "render_height": 1.1 },
         "ai": {
             "ranged": true,
@@ -67,7 +67,7 @@
     },
     "cucumber": {
         "name": "黄瓜",
-        "sprite_dir": "joy_side_template/sprites/enemies/cucumber/",
+        "sprite_dir": "sprites/enemies/cucumber/",
         "stats": { "hp": 40, "speed": 2.8, "melee_damage": 8, "render_height": 0.9 },
         "ai": {
             "ranged": true,
@@ -89,7 +89,7 @@
     },
     "whale": {
         "name": "鲸鱼",
-        "sprite_dir": "joy_side_template/sprites/enemies/whale/",
+        "sprite_dir": "sprites/enemies/whale/",
         "faces_left": true,
         "stats": { "hp": 200, "speed": 1.2, "melee_damage": 45, "render_height": 1.7 },
         "ai": {

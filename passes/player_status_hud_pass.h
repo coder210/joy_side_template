@@ -83,7 +83,7 @@ static void player_status_hud_pass(entt::registry& ecs, uint32_t local_conv,
 
                 // 底框：Health Bar.png（含 3 个心形空槽）
                 const char* hb_path = am ? am->GetResourcePath(AssetManager::kCatUI, "health_bar") : nullptr;
-                if (!hb_path) hb_path = "joy_side_template/sprites/objects/11-Health Bar/Health Bar.png";
+                if (!hb_path) hb_path = "sprites/objects/11-Health Bar/Health Bar.png";
                 image_p hb = am ? am->GetImage(r2d, hb_path) : NULL;
                 float baseW = 0.0f, baseH = gfxH;
                 if (hb) {
@@ -104,7 +104,7 @@ static void player_status_hud_pass(entt::registry& ecs, uint32_t local_conv,
                 gfxH = baseH;
 
                 // 填充：3 个 Heart.png 落在底框 3 个槽位（暗淡作底、亮心裁剪填充）
-                const char* heart_path = "joy_side_template/sprites/objects/11-Health Bar/Heart.png";
+                const char* heart_path = "sprites/objects/11-Health Bar/Heart.png";
                 image_p heart = am ? am->GetImage(r2d, heart_path) : NULL;
                 if (heart && baseW > 0.0f) {
                         image_set_blend_mode(heart, JR2D_BLEND_BLEND);

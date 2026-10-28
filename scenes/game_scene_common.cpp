@@ -150,9 +150,9 @@ void GameSceneCommon::initControlsAndAudio(GameScene* self)
     self->gcl = new GameplayControlsLayer(ctx);   // 纯 button 操作层，直接挂在 gs_ 上由 GameScene 桥接
 
     ctx->audio_dev = audio_open_device();
-    ctx->step_sound = audio_shot_create("joy_side_template/sounds/grass-step.wav", ctx->audio_dev);
+    ctx->step_sound = audio_shot_create("audio/grass-step.wav", ctx->audio_dev);
     audio_shot_set_gain(ctx->step_sound, ctx->settings.sfx_volume);
-    ctx->bgm = audio_bgm_create("joy_side_template/sounds/bgm.wav", ctx->audio_dev);
+    ctx->bgm = audio_bgm_create("audio/bgm.wav", ctx->audio_dev);
     audio_bgm_set_gain(ctx->bgm, ctx->settings.bgm_volume);
 }
 

@@ -24,7 +24,7 @@ struct Context;
 
 // ============================================================
 // 玩家脚部粒子（跑/跳/落尘土）—— 纯渲染，挂 PlayerParticleComponent 于玩家实体。
-// 素材为 6 张独立 PNG（joy_side_template/sprites/objects/13~15-* Particles/1..6.png），
+// 素材为 6 张独立 PNG（sprites/objects/13~15-* Particles/1..6.png），
 // 按寿命推进帧、按 alpha 淡出；不影响帧同步、不进快照。
 // ============================================================
 #ifndef PLAYER_PARTICLE_FRAMES
@@ -56,9 +56,9 @@ static image_p get_particle_image(Context* ctx, int type, int frame)
     // 缺失时回退内置默认目录，不在此硬编码对象文件夹路径。
     static const char* kPartIds[3] = { "run", "jump", "fall" };
     static const char* kDefDirs[3] = {
-        "joy_side_template/sprites/objects/13-Run Particles",
-        "joy_side_template/sprites/objects/14-Jump Particles",
-        "joy_side_template/sprites/objects/15-Fall Particles"
+        "sprites/objects/13-Run Particles",
+        "sprites/objects/14-Jump Particles",
+        "sprites/objects/15-Fall Particles"
     };
     if (type < 0 || type > 2) type = 0;
     if (frame < 0) frame = 0;

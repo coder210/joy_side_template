@@ -35,9 +35,9 @@ static void draw_bomb_pass(Context* ctx, float dt)
     const float z = (gs.view_zoom > 0.0f) ? gs.view_zoom : 1.0f;
 
     auto* am = AssetManager::GetInstance();
-    if (am && !g_bomb_off) g_bomb_off = am->GetImage(ctx->r2d, "joy_side_template/sprites/objects/bomb_sheet/off.png");
-    if (am && !g_bomb_on)  g_bomb_on  = am->GetImage(ctx->r2d, "joy_side_template/sprites/objects/bomb_sheet/on.png");
-    if (am && !g_bomb_exp) g_bomb_exp = am->GetImage(ctx->r2d, "joy_side_template/sprites/objects/bomb_sheet/explosion.png");
+    if (am && !g_bomb_off) g_bomb_off = am->GetImage(ctx->r2d, "sprites/objects/bomb_sheet/off.png");
+    if (am && !g_bomb_on)  g_bomb_on  = am->GetImage(ctx->r2d, "sprites/objects/bomb_sheet/on.png");
+    if (am && !g_bomb_exp) g_bomb_exp = am->GetImage(ctx->r2d, "sprites/objects/bomb_sheet/explosion.png");
 
     const float TILE = 108.0f;                 // 正方形帧边长（与打包一致）
     const float kFPS = 12.0f;                  // 与角色动画一致

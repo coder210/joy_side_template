@@ -1,0 +1,25 @@
+{
+    "fonts": {
+        "simhei": "fonts/simhei.ttf"
+    },
+    "maps": {
+        "level1": "levels/level1.lua",
+        "level2": "levels/level2.lua",
+        "level3": "levels/level3.lua",
+        "level4": "levels/level4.lua",
+        "level5": "levels/level5.lua",
+        "main_scene": "levels/main_scene.lua"
+    },
+    "config": {
+        "characters": "data/characters.json",
+        "enemies": "data/enemies.json"
+    },
+    "ui": {
+        "health_bar": "sprites/objects/11-Health Bar/Health Bar.png"
+    },
+    "particles": {
+        "run": "sprites/objects/13-Run Particles",
+        "jump": "sprites/objects/14-Jump Particles",
+        "fall": "sprites/objects/15-Fall Particles"
+    }
+}

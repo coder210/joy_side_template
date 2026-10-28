@@ -31,7 +31,7 @@ void EnemyCatalog::setBuiltinDefault()
     d.patrol_radius = 3.0f;
     d.detect_radius = 6.0f;
     d.attack_radius = 1.5f;
-    d.sprite_dir = "joy_side_template/sprites/enemies/bald_pirate/";
+    d.sprite_dir = "sprites/enemies/bald_pirate/";
     d.anims[ENEMY_ANIM_IDLE].dir        = "1-Idle";         d.anims[ENEMY_ANIM_IDLE].frames = 34;
     d.anims[ENEMY_ANIM_RUN].dir         = "2-Run";          d.anims[ENEMY_ANIM_RUN].frames = 14;
     d.anims[ENEMY_ANIM_ATTACK].dir      = "7-Attack";       d.anims[ENEMY_ANIM_ATTACK].frames = 12;

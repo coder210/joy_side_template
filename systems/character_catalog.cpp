@@ -25,7 +25,7 @@ void CharacterCatalog::setBuiltinDefault()
     d.name = "战士";
     d.max_hp = 100;
     d.move_speed = fp_from_float(2.4f);
-    d.sprite_dir = "joy_side_template/sprites/characters/bomb_buy_sheet/";
+    d.sprite_dir = "sprites/characters/bomb_buy_sheet/";
     d.anims[ANIM_IDLE].file   = "idle";
     d.anims[ANIM_WALK].file   = "run";    // 素材实为 run.png
     d.anims[ANIM_ATTACK].file = "";       // 素材缺失，渲染降级 idle
