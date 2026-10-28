@@ -4,8 +4,6 @@ name: Build joy_side_template for Linux
 # 桌面构建把 assets/ POST_BUILD 复制到 build/Release/，一起上传即完整可运行包。
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
   pull_request:
 
 jobs:

@@ -4,8 +4,6 @@ name: Build joy_side_template for Android
 # 游戏根 CMakeLists 从 app/ 向上 4 层（app -> android-project -> SDL -> joy -> 仓库根）。
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
   pull_request:
 
 jobs:
