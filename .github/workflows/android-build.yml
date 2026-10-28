@@ -1,0 +1,97 @@
+name: Build joy_side_template for Android
+
+# 独立仓库：SDL 的 Android 工程位于 joy/SDL/android-project。
+# 游戏根 CMakeLists 从 app/ 向上 4 层（app -> android-project -> SDL -> joy -> 仓库根）。
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.SUBMODULE_TOKEN || github.token }}
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Copy build.gradle to SDL project
+        run: cp build.gradle joy/SDL/android-project/app/
+
+      - name: Patch build.gradle for standalone layout
+        run: |
+          cd joy/SDL/android-project/app/
+
+          # 游戏根 CMakeLists（4 层）
+          sed -i 's#\.\./\.\./\.\./CMakeLists.txt#../../../../CMakeLists.txt#' build.gradle
+
+          # 传入 MOBILE_MAIN_DIR，游戏 CMake 据此推导 MOBILE_ASSETS_DIR
+          sed -i 's#-DANDROID_APP_PLATFORM=android-16"#-DANDROID_APP_PLATFORM=android-16", "-DMOBILE_MAIN_DIR=${System.getProperty("user.dir")}/app/src/main"#' build.gradle
+
+          grep -nE "path |arguments " build.gradle
+
+      - name: Add copyIcons task to build.gradle
+        run: |
+          cd joy/SDL/android-project/app/
+          cat >> build.gradle << 'EOF'
+
+          task copyIcons {
+              doLast {
+                  def densities = ['hdpi', 'mdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi']
+                  def sourceFile = file('../../../../logo.png')
+                  if (!sourceFile.exists()) {
+                      throw new GradleException("logo.png not found at ${sourceFile.absolutePath}")
+                  }
+                  densities.each { density ->
+                      def targetDir = file("src/main/res/mipmap-${density}")
+                      if (!targetDir.exists()) {
+                          targetDir.mkdirs()
+                      }
+                      copy {
+                          from sourceFile
+                          into targetDir
+                          rename '.*', 'ic_launcher.png'
+                      }
+                  }
+              }
+          }
+
+          preBuild.dependsOn copyIcons
+
+          if (project.hasProperty('appDisplayName')) {
+              android.defaultConfig {
+                  resValue "string", "app_name", project.appDisplayName
+              }
+          }
+
+          android.applicationVariants.all { variant ->
+              variant.outputs.all { output ->
+                  def targetName = project.hasProperty('targetName') ? project.targetName : 'Game'
+                  def buildType = variant.buildType.name
+                  outputFileName = "${targetName}-${buildType}.apk"
+              }
+          }
+          EOF
+
+      - name: Build APK
+        run: |
+          cd joy/SDL/android-project/
+          chmod +x gradlew
+          ./gradlew assembleDebug -PtargetName=joy_side_template -PappDisplayName="Joy Side Template"
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: joy_side_template-debug
+          retention-days: 7
+          path: joy/SDL/android-project/app/build/outputs/apk/debug/joy_side_template-debug.apk
